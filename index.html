@@ -7,231 +7,98 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0d12;
-    --bg2: #13131c;
-    --bg3: #1a1a26;
-    --border: rgba(180,160,255,0.12);
-    --border2: rgba(180,160,255,0.25);
-    --accent: #b49dff;
-    --accent2: #7c5cbf;
-    --gold: #d4a843;
-    --gold2: #f0c96a;
-    --text: #e8e4f4;
-    --text2: #9990b8;
-    --text3: #5a5475;
-    --green: #1DB954;
-    --red: #e05555;
-    --radius: 12px;
-    --radius-sm: 7px;
+    --bg: #0d0d12; --bg2: #13131c; --bg3: #1a1a26;
+    --border: rgba(180,160,255,0.12); --border2: rgba(180,160,255,0.25);
+    --accent: #b49dff; --accent2: #7c5cbf;
+    --gold: #d4a843; --gold2: #f0c96a;
+    --text: #e8e4f4; --text2: #9990b8; --text3: #5a5475;
+    --green: #1DB954; --red: #e05555;
+    --radius: 12px; --radius-sm: 7px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'Lato', sans-serif; font-weight: 300; min-height: 100vh; }
-
-  /* starfield */
   body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0;
+    content: ''; position: fixed; inset: 0; z-index: 0;
     background-image:
       radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.25) 0%, transparent 100%),
       radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 100%),
       radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,0.2) 0%, transparent 100%),
       radial-gradient(1px 1px at 75% 85%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.2) 0%, transparent 100%),
-      radial-gradient(2px 2px at 20% 50%, rgba(180,157,255,0.15) 0%, transparent 100%),
-      radial-gradient(2px 2px at 65% 25%, rgba(212,168,67,0.12) 0%, transparent 100%);
+      radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.2) 0%, transparent 100%);
     pointer-events: none;
   }
-
   .page { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-
-  /* steps */
   .step { display: none; animation: fadeIn 0.4s ease; }
   .step.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* HERO */
-  .hero { text-align: center; padding: 3.5rem 1rem 2.5rem; }
-  .hero-symbol { font-size: 64px; margin-bottom: 1rem; filter: drop-shadow(0 0 20px rgba(180,157,255,0.4)); }
+  .hero { text-align: center; padding: 3rem 1rem 2rem; }
+  .hero-symbol { font-size: 56px; margin-bottom: 1rem; filter: drop-shadow(0 0 20px rgba(180,157,255,0.4)); }
   .hero h1 {
-    font-family: 'Cinzel', serif; font-size: 28px; font-weight: 600;
+    font-family: 'Cinzel', serif; font-size: 26px; font-weight: 600;
     letter-spacing: 4px; text-transform: uppercase;
     background: linear-gradient(135deg, var(--gold2), var(--accent));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     margin-bottom: 0.75rem;
   }
   .hero p { font-size: 15px; color: var(--text2); line-height: 1.75; max-width: 480px; margin: 0 auto 2rem; }
-  .divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent2), transparent); margin: 1.5rem auto; }
+  .divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent2), transparent); margin: 1.25rem auto; }
 
-  /* BUTTONS */
-  .btn-spotify {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--green); color: #fff; border: none;
-    padding: 13px 28px; border-radius: 99px;
-    font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700;
-    cursor: pointer; letter-spacing: 0.5px;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 4px 20px rgba(29,185,84,0.3);
-  }
+  .btn-spotify { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: #fff; border: none; padding: 13px 28px; border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(29,185,84,0.3); }
   .btn-spotify:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(29,185,84,0.4); }
-  .btn-spotify:active { transform: scale(0.98); }
-
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; color: var(--text2);
-    border: 1px solid var(--border2);
-    padding: 10px 20px; border-radius: 99px;
-    font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 400;
-    cursor: pointer; transition: all 0.15s;
-  }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text2); border: 1px solid var(--border2); padding: 10px 20px; border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.15s; }
   .btn-ghost:hover { color: var(--text); border-color: var(--accent); background: rgba(180,157,255,0.06); }
-
+  .btn-copy { display: inline-flex; align-items: center; gap: 8px; background: var(--accent2); color: #fff; border: none; padding: 12px 22px; border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+  .btn-copy:hover { background: var(--accent); }
   .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem; }
 
-  /* CARDS */
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-  .card-title {
-    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 0.875rem;
-  }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+  .card-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.875rem; }
 
-  /* SETUP STEP */
-  .redirect-box {
-    background: var(--bg3); border: 1px solid var(--border2);
-    border-radius: var(--radius-sm); padding: 10px 14px;
-    font-family: monospace; font-size: 13px; color: var(--accent);
-    word-break: break-all; margin: 0.75rem 0 1rem;
-  }
-  .step-num {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: rgba(180,157,255,0.15); color: var(--accent);
-    font-size: 11px; font-weight: 700; margin-right: 8px; flex-shrink: 0;
-  }
-  .step-item { display: flex; align-items: flex-start; gap: 0; margin-bottom: 1rem; font-size: 14px; color: var(--text2); line-height: 1.6; }
-  .step-item-content { flex: 1; }
+  .step-item { display: flex; align-items: flex-start; margin-bottom: 1rem; font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(180,157,255,0.15); color: var(--accent); font-size: 11px; font-weight: 700; margin-right: 10px; flex-shrink: 0; margin-top: 1px; }
   .step-item a { color: var(--accent); text-decoration: none; }
   .step-item a:hover { text-decoration: underline; }
 
   label { display: block; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
-  input[type="text"], input[type="password"] {
-    width: 100%; background: var(--bg3); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 11px 14px;
-    font-family: 'Lato', sans-serif; font-size: 14px; color: var(--text);
-    outline: none; transition: border-color 0.15s;
-  }
+  input[type="text"] { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 11px 14px; font-family: 'Lato', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
   input:focus { border-color: var(--accent2); }
 
-  /* ERROR */
-  .error-box {
-    background: rgba(224,85,85,0.1); border: 1px solid rgba(224,85,85,0.3);
-    color: #f08080; border-radius: var(--radius-sm);
-    padding: 12px 14px; font-size: 13px; line-height: 1.5;
-    margin-bottom: 1rem; display: none;
-  }
+  .redirect-box { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 10px 14px; font-family: monospace; font-size: 13px; color: var(--accent); word-break: break-all; margin: 0.75rem 0 1rem; }
+  .error-box { background: rgba(224,85,85,0.1); border: 1px solid rgba(224,85,85,0.3); color: #f08080; border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; line-height: 1.5; margin-bottom: 1rem; display: none; }
 
-  /* LOADING */
   .loading-center { text-align: center; padding: 3rem 1rem; }
-  .spinner {
-    width: 48px; height: 48px; margin: 0 auto 1.5rem;
-    border: 2px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.9s linear infinite;
-  }
+  .spinner { width: 48px; height: 48px; margin: 0 auto 1.5rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-label { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; color: var(--text2); margin-bottom: 1.25rem; }
-  .prog-wrap { height: 3px; background: var(--border); border-radius: 99px; max-width: 320px; margin: 0 auto; overflow: hidden; }
-  .prog-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 99px; transition: width 0.5s ease; }
+  .loading-label { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; color: var(--text2); }
 
-  /* SUMMARY */
-  .summary-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.75rem; }
-  .stat-pill {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 10px 16px;
-    font-size: 13px; color: var(--text2);
-  }
-  .stat-pill strong { color: var(--text); font-weight: 700; }
+  /* RISULTATO: lista canzoni da copiare */
+  .result-intro { font-size: 15px; color: var(--text2); line-height: 1.7; margin-bottom: 1.5rem; }
+  .result-intro strong { color: var(--text); }
+  .song-count-badge { display: inline-block; background: rgba(180,157,255,0.15); color: var(--accent); border-radius: 99px; padding: 4px 14px; font-size: 14px; font-weight: 700; margin-bottom: 1.5rem; }
 
-  /* ARCANA GRID */
-  .section-heading {
-    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
-  }
-  .arcana-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
-  .arcana-card {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1rem; cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    position: relative; overflow: hidden;
-  }
-  .arcana-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: var(--card-color, transparent);
-    opacity: 0; transition: opacity 0.2s;
-  }
-  .arcana-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-  .arcana-card:hover::before { opacity: 0.05; }
-  .arcana-card.empty { opacity: 0.35; cursor: default; pointer-events: none; }
-  .ac-num { font-size: 10px; letter-spacing: 2px; color: var(--text3); margin-bottom: 3px; font-family: 'Cinzel', serif; }
-  .ac-name { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
-  .ac-count { font-size: 12px; color: var(--text2); margin-bottom: 8px; }
-  .ac-bar { height: 2px; background: var(--border); border-radius: 99px; overflow: hidden; }
-  .ac-bar-fill { height: 100%; border-radius: 99px; transition: width 0.5s ease; }
+  .tracks-textarea { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; font-family: monospace; font-size: 12px; color: var(--text2); line-height: 1.6; resize: none; outline: none; }
 
-  /* DETAIL */
-  .detail-back { margin-bottom: 1.5rem; }
-  .detail-top {
-    display: flex; align-items: flex-start; gap: 1rem;
-    margin-bottom: 1.75rem; padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .detail-roman {
-    font-family: 'Cinzel', serif; font-size: 36px; font-weight: 600;
-    color: var(--gold); line-height: 1; flex-shrink: 0;
-  }
-  .detail-info h2 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-  .detail-info p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+  .howto-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+  .howto-box .card-title { margin-bottom: 0.75rem; }
+  .howto-step { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
+  .howto-step:last-child { margin-bottom: 0; }
 
-  .song-list { display: flex; flex-direction: column; gap: 6px; }
-  .song-item {
-    display: flex; align-items: center; gap: 12px;
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 10px 12px;
-    transition: border-color 0.15s;
-  }
-  .song-item:hover { border-color: var(--border2); }
-  .song-cover {
-    width: 42px; height: 42px; flex-shrink: 0;
-    border-radius: 5px; background: var(--bg3); overflow: hidden;
-  }
-  .song-cover img { width: 100%; height: 100%; object-fit: cover; }
-  .song-info { flex: 1; min-width: 0; }
-  .song-name { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .song-artist { font-size: 12px; color: var(--text2); margin-top: 1px; }
-  .song-reason { font-size: 11px; color: var(--text3); margin-top: 3px; font-style: italic; }
+  .copied-msg { display: none; color: var(--green); font-size: 13px; margin-left: 10px; }
 
-  .export-row { display: flex; gap: 10px; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-
-  /* SVG icons inline */
   .ico { width: 18px; height: 18px; display: inline-block; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- STEP: INTRO -->
+  <!-- INTRO -->
   <div class="step active" id="step-intro">
     <div class="hero">
       <div class="hero-symbol">🎴</div>
       <h1>Arcani Maggiori × Spotify</h1>
       <div class="divider"></div>
-      <p>Le tue 100 canzoni preferite vengono analizzate dall'AI e distribuite nelle 22 playlist degli Arcani Maggiori, dal Matto al Mondo.</p>
+      <p>Recupera le tue 100 canzoni preferite da Spotify, poi incollale in Claude per ottenere le 22 playlist degli Arcani Maggiori.</p>
       <button class="btn-spotify" onclick="showStep('step-setup')">
         <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12.5c2.5-1 5.5-1 8 0M7 9c3-1.5 7-1.5 10 0M9 16c2-0.7 4-0.7 6 0"/></svg>
         Connetti con Spotify
@@ -239,130 +106,93 @@
     </div>
   </div>
 
-  <!-- STEP: SETUP -->
+  <!-- SETUP -->
   <div class="step" id="step-setup">
     <div class="card">
-      <div class="card-title">⚙ Configurazione app Spotify</div>
+      <div class="card-title">⚙ Configurazione</div>
       <div class="step-item">
         <span class="step-num">1</span>
-        <div class="step-item-content">
-          Vai su <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a> e crea una nuova app (nome qualsiasi, tipo <em>Web Playback SDK</em>)
-        </div>
+        <div>Vai su <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a> e crea una nuova app</div>
       </div>
       <div class="step-item">
         <span class="step-num">2</span>
-        <div class="step-item-content">
-          Nelle impostazioni dell'app, sezione <strong>Redirect URIs</strong>, aggiungi esattamente questo indirizzo:
+        <div>
+          Nelle impostazioni → <strong>Redirect URIs</strong>, aggiungi esattamente:
           <div class="redirect-box" id="redirect-display">caricamento…</div>
         </div>
       </div>
       <div class="step-item">
         <span class="step-num">3</span>
-        <div class="step-item-content">Copia il <strong>Client ID</strong> dalla dashboard e incollalo qui sotto</div>
+        <div>Copia il <strong>Client ID</strong> e incollalo qui:</div>
       </div>
-      <div style="margin-top:0.5rem">
+      <div style="margin-top:0.25rem">
         <label for="client-id-input">Client ID</label>
         <input type="text" id="client-id-input" placeholder="4b3a2c1d…" autocomplete="off" />
       </div>
     </div>
     <div id="setup-error" class="error-box"></div>
     <div class="btn-row">
-      <button class="btn-ghost" onclick="showStep('step-intro')">
-        <svg class="ico" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        Indietro
-      </button>
-      <button class="btn-spotify" onclick="startOAuth()">
-        <svg class="ico" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-        Accedi con Spotify
-      </button>
+      <button class="btn-ghost" onclick="showStep('step-intro')">← Indietro</button>
+      <button class="btn-spotify" onclick="startOAuth()">Accedi con Spotify →</button>
     </div>
   </div>
 
-  <!-- STEP: CALLBACK -->
+  <!-- CALLBACK -->
   <div class="step" id="step-callback">
     <div class="loading-center">
       <div class="spinner"></div>
       <div class="loading-label" id="callback-label">Completamento accesso…</div>
-      <div id="callback-error" class="error-box" style="text-align:left;max-width:500px;margin:1rem auto 0"></div>
+      <div id="callback-error" class="error-box" style="text-align:left;max-width:500px;margin:1.5rem auto 0"></div>
     </div>
   </div>
 
-  <!-- STEP: LOADING -->
+  <!-- LOADING -->
   <div class="step" id="step-loading">
     <div class="loading-center">
       <div class="spinner"></div>
       <div class="loading-label" id="loading-msg">Recupero canzoni…</div>
-      <div class="prog-wrap"><div class="prog-fill" id="prog" style="width:5%"></div></div>
     </div>
   </div>
 
-  <!-- STEP: RESULTS -->
-  <div class="step" id="step-results">
-    <div id="grid-view">
-      <div class="summary-row" id="summary-row"></div>
-      <div class="section-heading">Le tue playlist degli Arcani</div>
-      <div class="arcana-grid" id="arcana-grid"></div>
-      <div class="export-row">
-        <button class="btn-ghost" onclick="exportJSON()">
-          <svg class="ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Esporta JSON
-        </button>
-        <button class="btn-ghost" onclick="resetApp()">
-          <svg class="ico" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
-          Ricomincia
-        </button>
-      </div>
+  <!-- RISULTATO: copia e incolla -->
+  <div class="step" id="step-done">
+    <p class="result-intro">
+      ✅ <strong id="track-count-label">100 canzoni</strong> recuperate con successo da Spotify!<br>
+      Ora copia il testo qui sotto e incollalo in Claude (nella stessa chat dove hai questa app).
+    </p>
+
+    <textarea class="tracks-textarea" id="tracks-output" rows="14" readonly></textarea>
+
+    <div class="btn-row" style="margin-top:1rem">
+      <button class="btn-copy" onclick="copyTracks()">
+        <svg class="ico" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copia tutto
+      </button>
+      <span class="copied-msg" id="copied-msg">✓ Copiato!</span>
     </div>
-    <div id="detail-view" style="display:none">
-      <div class="detail-back">
-        <button class="btn-ghost" onclick="closeDetail()">
-          <svg class="ico" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          Tutte le playlist
-        </button>
+
+    <div class="howto-box">
+      <div class="card-title">📋 Passaggio successivo</div>
+      <div class="howto-step">
+        <span class="step-num">1</span>
+        <span>Clicca <strong>Copia tutto</strong> qui sopra</span>
       </div>
-      <div class="detail-top" id="detail-top"></div>
-      <div class="song-list" id="detail-songs"></div>
+      <div class="howto-step">
+        <span class="step-num">2</span>
+        <span>Torna nella chat con Claude e incolla il testo (Ctrl+V / Cmd+V)</span>
+      </div>
+      <div class="howto-step">
+        <span class="step-num">3</span>
+        <span>Claude analizzerà le canzoni e creerà le 22 playlist degli Arcani Maggiori</span>
+      </div>
     </div>
   </div>
 
 </div>
-
 <script>
-const ARCANA = [
-  { num:"0",    name:"Il Matto",               keywords:"libertà, inizio, follia, spontaneità, viaggio",            color:"#9F77DD" },
-  { num:"I",    name:"Il Mago",                keywords:"potere, volontà, abilità, creatività, magia",              color:"#5DCAA5" },
-  { num:"II",   name:"La Papessa",             keywords:"mistero, intuizione, segreto, profondità, silenzio",       color:"#534AB7" },
-  { num:"III",  name:"L'Imperatrice",          keywords:"natura, fertilità, sensualità, abbondanza, bellezza",      color:"#ED93B1" },
-  { num:"IV",   name:"L'Imperatore",           keywords:"autorità, struttura, controllo, forza, potere",            color:"#D85A30" },
-  { num:"V",    name:"Il Papa",                keywords:"tradizione, spiritualità, guida, fede, saggezza",          color:"#378ADD" },
-  { num:"VI",   name:"Gli Amanti",             keywords:"amore, scelta, relazione, desiderio, unione",              color:"#D4537E" },
-  { num:"VII",  name:"Il Carro",               keywords:"vittoria, determinazione, movimento, conquista, velocità", color:"#BA7517" },
-  { num:"VIII", name:"La Forza",               keywords:"coraggio, pazienza, disciplina, resilienza, dominio",      color:"#639922" },
-  { num:"IX",   name:"L'Eremita",              keywords:"solitudine, ricerca, saggezza, ritiro, meditazione",       color:"#888780" },
-  { num:"X",    name:"La Ruota della Fortuna", keywords:"destino, ciclo, cambiamento, fortuna, caso",               color:"#EF9F27" },
-  { num:"XI",   name:"La Giustizia",           keywords:"equilibrio, verità, legge, karma, equità",                color:"#185FA5" },
-  { num:"XII",  name:"L'Appeso",               keywords:"sacrificio, pausa, sospensione, prospettiva, attesa",      color:"#7F77DD" },
-  { num:"XIII", name:"La Morte",               keywords:"trasformazione, fine, rinascita, cambiamento, transizione",color:"#555550" },
-  { num:"XIV",  name:"La Temperanza",          keywords:"armonia, equilibrio, moderazione, fusione, calma",         color:"#1D9E75" },
-  { num:"XV",   name:"Il Diavolo",             keywords:"oscurità, dipendenza, tentazione, ombre, eccesso",         color:"#993C1D" },
-  { num:"XVI",  name:"La Torre",               keywords:"distruzione, caos, crollo, rivelazione, rottura",          color:"#E24B4A" },
-  { num:"XVII", name:"La Stella",              keywords:"speranza, guarigione, sogno, ispirazione, luce",           color:"#85B7EB" },
-  { num:"XVIII",name:"La Luna",                keywords:"illusione, sogno, paura, inconscio, notte",                color:"#AFA9EC" },
-  { num:"XIX",  name:"Il Sole",                keywords:"gioia, energia, vitalità, successo, chiarezza",            color:"#FAC775" },
-  { num:"XX",   name:"Il Giudizio",            keywords:"risveglio, chiamata, redenzione, rinascita, liberazione",  color:"#F0997B" },
-  { num:"XXI",  name:"Il Mondo",               keywords:"completamento, integrazione, totalità, trionfo, pienezza", color:"#97C459" },
-];
-
-let allPlaylists = [];
-
 function showStep(id) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-}
-
-function setProgress(pct, msg) {
-  document.getElementById('prog').style.width = pct + '%';
-  if (msg) document.getElementById('loading-msg').textContent = msg;
 }
 
 function getRedirectUri() {
@@ -388,23 +218,17 @@ async function startOAuth() {
   const errEl = document.getElementById('setup-error');
   errEl.style.display = 'none';
   if (!clientId) { errEl.textContent = 'Inserisci il Client ID.'; errEl.style.display = 'block'; return; }
-
   const verifier = generateRandomString(64);
   const challenge = await generateCodeChallenge(verifier);
   const state = generateRandomString(16);
-
   sessionStorage.setItem('pkce_verifier', verifier);
   sessionStorage.setItem('pkce_state', state);
   sessionStorage.setItem('spotify_client_id', clientId);
-
   const params = new URLSearchParams({
-    client_id: clientId,
-    response_type: 'code',
-    redirect_uri: getRedirectUri(),
-    state,
+    client_id: clientId, response_type: 'code',
+    redirect_uri: getRedirectUri(), state,
     scope: 'user-library-read',
-    code_challenge_method: 'S256',
-    code_challenge: challenge,
+    code_challenge_method: 'S256', code_challenge: challenge,
   });
   window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
 }
@@ -414,11 +238,8 @@ async function exchangeCode(code, clientId, verifier) {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: getRedirectUri(),
-      client_id: clientId,
-      code_verifier: verifier,
+      grant_type: 'authorization_code', code,
+      redirect_uri: getRedirectUri(), client_id: clientId, code_verifier: verifier,
     }).toString(),
   });
   if (!res.ok) { const t = await res.text(); throw new Error(t); }
@@ -438,150 +259,23 @@ async function fetchLikedTracks(token) {
   return tracks.slice(0, 100);
 }
 
-async function assignWithAI(tracks) {
-  const trackList = tracks.map((item, i) => {
-    const t = item.track;
-    return `${i+1}. "${t.name}" - ${t.artists.map(a=>a.name).join(', ')} (album: ${t.album.name})`;
-  }).join('\n');
-  const arcanaList = ARCANA.map(a => `${a.num} - ${a.name} [${a.keywords}]`).join('\n');
-
-  const prompt = `Sei un esperto di musica e simbolismo dei Tarocchi. Hai 22 Arcani Maggiori. Ogni Arcano ha un'energia archetipica specifica.
-
-Arcani:
-${arcanaList}
-
-Canzoni da assegnare:
-${trackList}
-
-Per ogni canzone assegna l'Arcano più adatto (titolo, artista, mood, tema, energia).
-Rispondi SOLO con JSON valido senza markdown:
-{"assignments":[{"index":0,"arcana_num":"0","reason":"motivazione max 10 parole"},…]}
-Includi tutte le ${tracks.length} canzoni. arcana_num deve essere uno tra: 0,I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV,XVI,XVII,XVIII,XIX,XX,XXI`;
-
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 4000,
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-    setProgress(80, 'Costruzione playlist in corso…');
-    const data = await res.json();
-    const raw = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
-    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
-
-    allPlaylists = ARCANA.map(a => ({ ...a, songs: [] }));
-    parsed.assignments.forEach(asgn => {
-      const item = tracks[asgn.index];
-      if (!item) return;
-      const t = item.track;
-      const pl = allPlaylists.find(p => p.num === asgn.arcana_num);
-      if (pl) pl.songs.push({
-        name: t.name,
-        artist: t.artists.map(a => a.name).join(', '),
-        cover: t.album.images?.[2]?.url || t.album.images?.[0]?.url || '',
-        uri: t.uri,
-        reason: asgn.reason || ''
-      });
-    });
-    setProgress(100, 'Completato!');
-    setTimeout(renderResults, 500);
-  } catch(e) {
-    showStep('step-callback');
-    const el = document.getElementById('callback-error');
-    el.textContent = 'Errore AI: ' + e.message;
-    el.style.display = 'block';
-    document.getElementById('callback-label').textContent = 'Qualcosa è andato storto';
-  }
-}
-
-function renderResults() {
-  const total = allPlaylists.reduce((s, p) => s + p.songs.length, 0);
-  const populated = allPlaylists.filter(p => p.songs.length > 0).length;
-  const maxSongs = allPlaylists.reduce((m, p) => Math.max(m, p.songs.length), 0);
-
-  document.getElementById('summary-row').innerHTML = `
-    <div class="stat-pill"><strong>${total}</strong> canzoni distribuite</div>
-    <div class="stat-pill"><strong>${populated}</strong> / 22 playlist popolate</div>
-    <div class="stat-pill">max <strong>${maxSongs}</strong> canzoni per arcano</div>
-  `;
-
-  const grid = document.getElementById('arcana-grid');
-  grid.innerHTML = '';
-  allPlaylists.forEach((pl, idx) => {
-    const pct = maxSongs > 0 ? Math.round((pl.songs.length / maxSongs) * 100) : 0;
-    const card = document.createElement('div');
-    card.className = 'arcana-card' + (pl.songs.length === 0 ? ' empty' : '');
-    card.style.setProperty('--card-color', pl.color);
-    card.innerHTML = `
-      <div class="ac-num">ARCANO ${pl.num}</div>
-      <div class="ac-name">${pl.name}</div>
-      <div class="ac-count">${pl.songs.length} canzon${pl.songs.length === 1 ? 'e' : 'i'}</div>
-      <div class="ac-bar"><div class="ac-bar-fill" style="width:${pct}%;background:${pl.color}"></div></div>
-    `;
-    if (pl.songs.length > 0) card.onclick = () => openDetail(idx);
-    grid.appendChild(card);
-  });
-
-  showStep('step-results');
-}
-
-function openDetail(idx) {
-  const pl = allPlaylists[idx];
-  document.getElementById('grid-view').style.display = 'none';
-  document.getElementById('detail-view').style.display = 'block';
-
-  document.getElementById('detail-top').innerHTML = `
-    <div class="detail-roman">${pl.num}</div>
-    <div class="detail-info">
-      <h2>${pl.name}</h2>
-      <p>${pl.keywords}</p>
-    </div>
-  `;
-
-  const sl = document.getElementById('detail-songs');
-  sl.innerHTML = '';
-  pl.songs.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'song-item';
-    div.innerHTML = `
-      <div class="song-cover">${s.cover ? `<img src="${s.cover}" alt="" loading="lazy">` : ''}</div>
-      <div class="song-info">
-        <div class="song-name">${s.name}</div>
-        <div class="song-artist">${s.artist}</div>
-        ${s.reason ? `<div class="song-reason">${s.reason}</div>` : ''}
-      </div>
-    `;
-    sl.appendChild(div);
+function copyTracks() {
+  const ta = document.getElementById('tracks-output');
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const msg = document.getElementById('copied-msg');
+    msg.style.display = 'inline';
+    setTimeout(() => msg.style.display = 'none', 2500);
+  }).catch(() => {
+    document.execCommand('copy');
+    const msg = document.getElementById('copied-msg');
+    msg.style.display = 'inline';
+    setTimeout(() => msg.style.display = 'none', 2500);
   });
 }
 
-function closeDetail() {
-  document.getElementById('grid-view').style.display = '';
-  document.getElementById('detail-view').style.display = 'none';
-}
-
-function exportJSON() {
-  const data = allPlaylists.map(p => ({
-    arcana: p.num, name: p.name,
-    songs: p.songs.map(s => ({ name: s.name, artist: s.artist, uri: s.uri }))
-  }));
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'arcani_playlist.json';
-  a.click();
-}
-
-function resetApp() { allPlaylists = []; showStep('step-intro'); }
-
-// Init
 document.getElementById('redirect-display').textContent = getRedirectUri();
 
-// Handle OAuth callback
 (async function() {
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
@@ -589,32 +283,24 @@ document.getElementById('redirect-display').textContent = getRedirectUri();
   if (!code && !error) return;
 
   showStep('step-callback');
-
-  if (error) {
-    document.getElementById('callback-label').textContent = 'Accesso negato: ' + error;
-    return;
-  }
+  if (error) { document.getElementById('callback-label').textContent = 'Accesso negato: ' + error; return; }
 
   const savedState = sessionStorage.getItem('pkce_state');
   const verifier = sessionStorage.getItem('pkce_verifier');
   const clientId = sessionStorage.getItem('spotify_client_id');
   const state = params.get('state');
 
-  if (state !== savedState) {
-    document.getElementById('callback-label').textContent = 'Errore di sicurezza: state non corrisponde.';
-    return;
-  }
-
+  if (state !== savedState) { document.getElementById('callback-label').textContent = 'Errore di sicurezza: state non corrisponde.'; return; }
   history.replaceState({}, '', window.location.pathname);
 
   let tokenData;
   try {
-    document.getElementById('callback-label').textContent = 'Scambio token in corso…';
+    document.getElementById('callback-label').textContent = 'Scambio token…';
     tokenData = await exchangeCode(code, clientId, verifier);
   } catch(e) {
     document.getElementById('callback-label').textContent = 'Errore token';
     const el = document.getElementById('callback-error');
-    el.innerHTML = `Errore: ${e.message}<br><br><small>Assicurati che il Redirect URI nell'app Spotify corrisponda esattamente a: <code>${getRedirectUri()}</code></small>`;
+    el.innerHTML = `${e.message}<br><br><small>Redirect URI nell'app Spotify deve essere esattamente: <code>${getRedirectUri()}</code></small>`;
     el.style.display = 'block';
     return;
   }
@@ -624,7 +310,7 @@ document.getElementById('redirect-display').textContent = getRedirectUri();
   sessionStorage.removeItem('spotify_client_id');
 
   showStep('step-loading');
-  setProgress(10, 'Recupero canzoni preferite da Spotify…');
+  document.getElementById('loading-msg').textContent = 'Recupero canzoni preferite…';
 
   let tracks;
   try {
@@ -633,13 +319,24 @@ document.getElementById('redirect-display').textContent = getRedirectUri();
     showStep('step-callback');
     document.getElementById('callback-label').textContent = 'Errore Spotify';
     const el = document.getElementById('callback-error');
-    el.textContent = e.message;
-    el.style.display = 'block';
+    el.textContent = e.message; el.style.display = 'block';
     return;
   }
 
-  setProgress(35, `${tracks.length} canzoni recuperate. Analisi AI…`);
-  await assignWithAI(tracks);
+  // Costruisci testo da incollare in Claude
+  const lines = tracks.map((item, i) => {
+    const t = item.track;
+    return `${i+1}. "${t.name}" - ${t.artists.map(a=>a.name).join(', ')} [${t.album.name}]`;
+  });
+
+  const output = `ARCANI SPOTIFY - LE MIE ${tracks.length} CANZONI PREFERITE\n` +
+    `=`.repeat(50) + `\n\n` +
+    lines.join('\n') +
+    `\n\n---\nInserisci queste ${tracks.length} canzoni nelle 22 playlist degli Arcani Maggiori (dal Matto 0 al Mondo XXI), assegnando ogni canzone all'arcano più adatto in base a mood, titolo, artista e temi. Per ogni canzone indica: numero, arcano assegnato e una breve motivazione (max 8 parole). Poi mostra le playlist raggruppate per arcano.`;
+
+  document.getElementById('track-count-label').textContent = tracks.length + ' canzoni';
+  document.getElementById('tracks-output').value = output;
+  showStep('step-done');
 })();
 </script>
 </body>
