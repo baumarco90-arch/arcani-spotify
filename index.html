@@ -7,86 +7,125 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0d12; --bg2: #13131c; --bg3: #1a1a26;
-    --border: rgba(180,160,255,0.12); --border2: rgba(180,160,255,0.25);
-    --accent: #b49dff; --accent2: #7c5cbf;
-    --gold: #d4a843; --gold2: #f0c96a;
-    --text: #e8e4f4; --text2: #9990b8; --text3: #5a5475;
-    --green: #1DB954; --red: #e05555;
-    --radius: 12px; --radius-sm: 7px;
+    --bg:#0d0d12;--bg2:#13131c;--bg3:#1a1a26;
+    --border:rgba(180,160,255,0.12);--border2:rgba(180,160,255,0.25);
+    --accent:#b49dff;--accent2:#7c5cbf;
+    --gold:#d4a843;--gold2:#f0c96a;
+    --text:#e8e4f4;--text2:#9990b8;--text3:#5a5475;
+    --green:#1DB954;--radius:12px;--radius-sm:7px;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Lato', sans-serif; font-weight: 300; min-height: 100vh; }
-  body::before {
-    content: ''; position: fixed; inset: 0; z-index: 0;
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Lato',sans-serif;font-weight:300;min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;
     background-image:
-      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.25) 0%, transparent 100%),
-      radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 100%),
-      radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,0.2) 0%, transparent 100%),
-      radial-gradient(1px 1px at 75% 85%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.2) 0%, transparent 100%);
-    pointer-events: none;
-  }
-  .page { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-  .step { display: none; animation: fadeIn 0.4s ease; }
-  .step.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+      radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,0.25) 0%,transparent 100%),
+      radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,0.15) 0%,transparent 100%),
+      radial-gradient(1px 1px at 55% 40%,rgba(255,255,255,0.2) 0%,transparent 100%),
+      radial-gradient(1px 1px at 75% 85%,rgba(255,255,255,0.1) 0%,transparent 100%),
+      radial-gradient(2px 2px at 20% 50%,rgba(180,157,255,0.15) 0%,transparent 100%);
+    pointer-events:none;}
+  .page{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:2rem 1.5rem 4rem;}
+  .step{display:none;animation:fadeIn 0.4s ease;}
+  .step.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
-  .hero { text-align: center; padding: 3rem 1rem 2rem; }
-  .hero-symbol { font-size: 56px; margin-bottom: 1rem; filter: drop-shadow(0 0 20px rgba(180,157,255,0.4)); }
-  .hero h1 {
-    font-family: 'Cinzel', serif; font-size: 26px; font-weight: 600;
-    letter-spacing: 4px; text-transform: uppercase;
-    background: linear-gradient(135deg, var(--gold2), var(--accent));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    margin-bottom: 0.75rem;
-  }
-  .hero p { font-size: 15px; color: var(--text2); line-height: 1.75; max-width: 480px; margin: 0 auto 2rem; }
-  .divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent2), transparent); margin: 1.25rem auto; }
+  .hero{text-align:center;padding:3rem 1rem 2rem;}
+  .hero-symbol{font-size:56px;margin-bottom:1rem;filter:drop-shadow(0 0 20px rgba(180,157,255,0.4));}
+  .hero h1{font-family:'Cinzel',serif;font-size:26px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
+    background:linear-gradient(135deg,var(--gold2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.75rem;}
+  .hero p{font-size:15px;color:var(--text2);line-height:1.75;max-width:500px;margin:0 auto 2rem;}
+  .divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);margin:1.25rem auto;}
 
-  .btn-spotify { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: #fff; border: none; padding: 13px 28px; border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(29,185,84,0.3); }
-  .btn-spotify:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(29,185,84,0.4); }
-  .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text2); border: 1px solid var(--border2); padding: 10px 20px; border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.15s; }
-  .btn-ghost:hover { color: var(--text); border-color: var(--accent); background: rgba(180,157,255,0.06); }
-  .btn-copy { display: inline-flex; align-items: center; gap: 8px; background: var(--accent2); color: #fff; border: none; padding: 12px 22px; border-radius: 99px; font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
-  .btn-copy:hover { background: var(--accent); }
-  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem; }
+  .btn-spotify{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;border:none;
+    padding:13px 28px;border-radius:99px;font-family:'Lato',sans-serif;font-size:15px;font-weight:700;cursor:pointer;
+    letter-spacing:.5px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 20px rgba(29,185,84,0.3);}
+  .btn-spotify:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(29,185,84,0.4);}
+  .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text2);
+    border:1px solid var(--border2);padding:10px 20px;border-radius:99px;font-family:'Lato',sans-serif;
+    font-size:14px;cursor:pointer;transition:all .15s;}
+  .btn-ghost:hover{color:var(--text);border-color:var(--accent);background:rgba(180,157,255,0.06);}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.5rem;}
 
-  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
-  .card-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.875rem; }
+  .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1.25rem;}
+  .card-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.875rem;}
+  .step-item{display:flex;align-items:flex-start;margin-bottom:1rem;font-size:14px;color:var(--text2);line-height:1.6;}
+  .step-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+    background:rgba(180,157,255,0.15);color:var(--accent);font-size:11px;font-weight:700;margin-right:10px;flex-shrink:0;margin-top:1px;}
+  .step-item a{color:var(--accent);text-decoration:none;}
+  .step-item a:hover{text-decoration:underline;}
 
-  .step-item { display: flex; align-items: flex-start; margin-bottom: 1rem; font-size: 14px; color: var(--text2); line-height: 1.6; }
-  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(180,157,255,0.15); color: var(--accent); font-size: 11px; font-weight: 700; margin-right: 10px; flex-shrink: 0; margin-top: 1px; }
-  .step-item a { color: var(--accent); text-decoration: none; }
-  .step-item a:hover { text-decoration: underline; }
+  label{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+  input[type="text"]{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);
+    padding:11px 14px;font-family:'Lato',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .15s;}
+  input:focus{border-color:var(--accent2);}
 
-  label { display: block; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
-  input[type="text"] { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 11px 14px; font-family: 'Lato', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
-  input:focus { border-color: var(--accent2); }
+  .redirect-box{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);
+    padding:10px 14px;font-family:monospace;font-size:13px;color:var(--accent);word-break:break-all;margin:.75rem 0 1rem;}
+  .error-box{background:rgba(224,85,85,0.1);border:1px solid rgba(224,85,85,0.3);color:#f08080;
+    border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;line-height:1.5;margin-bottom:1rem;display:none;}
 
-  .redirect-box { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 10px 14px; font-family: monospace; font-size: 13px; color: var(--accent); word-break: break-all; margin: 0.75rem 0 1rem; }
-  .error-box { background: rgba(224,85,85,0.1); border: 1px solid rgba(224,85,85,0.3); color: #f08080; border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; line-height: 1.5; margin-bottom: 1rem; display: none; }
+  .loading-center{text-align:center;padding:3rem 1rem;}
+  .spinner{width:48px;height:48px;margin:0 auto 1.5rem;border:2px solid var(--border);border-top-color:var(--accent);
+    border-radius:50%;animation:spin .9s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .loading-label{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--text2);margin-bottom:1rem;}
+  .prog-wrap{height:3px;background:var(--border);border-radius:99px;max-width:400px;margin:.75rem auto 0;overflow:hidden;}
+  .prog-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:99px;transition:width .4s ease;}
+  .loading-detail{font-size:13px;color:var(--text3);margin-top:.75rem;min-height:20px;}
 
-  .loading-center { text-align: center; padding: 3rem 1rem; }
-  .spinner { width: 48px; height: 48px; margin: 0 auto 1.5rem; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-label { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; color: var(--text2); }
+  /* RESULTS */
+  .results-header{margin-bottom:1.75rem;}
+  .results-header h2{font-family:'Cinzel',serif;font-size:20px;font-weight:600;
+    background:linear-gradient(135deg,var(--gold2),var(--accent));-webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem;}
+  .results-header p{font-size:14px;color:var(--text2);line-height:1.6;}
 
-  /* RISULTATO: lista canzoni da copiare */
-  .result-intro { font-size: 15px; color: var(--text2); line-height: 1.7; margin-bottom: 1.5rem; }
-  .result-intro strong { color: var(--text); }
-  .song-count-badge { display: inline-block; background: rgba(180,157,255,0.15); color: var(--accent); border-radius: 99px; padding: 4px 14px; font-size: 14px; font-weight: 700; margin-bottom: 1.5rem; }
+  .arcana-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:2rem;}
+  .arcana-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+    padding:1rem 1.125rem;cursor:pointer;transition:border-color .2s,transform .15s;position:relative;overflow:hidden;}
+  .arcana-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+  .arcana-card.empty{opacity:.3;cursor:default;pointer-events:none;}
+  .ac-accent{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+  .ac-num{font-size:10px;letter-spacing:2px;color:var(--text3);margin-bottom:2px;font-family:'Cinzel',serif;}
+  .ac-name{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.3;}
+  .ac-count{font-size:12px;color:var(--text2);}
+  .ac-open{font-size:11px;color:var(--text3);margin-top:6px;}
+  .arcana-card:hover .ac-open{color:var(--accent);}
 
-  .tracks-textarea { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; font-family: monospace; font-size: 12px; color: var(--text2); line-height: 1.6; resize: none; outline: none; }
+  /* DETAIL */
+  .detail-back{margin-bottom:1.5rem;}
+  .detail-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;
+    padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
+  .detail-roman{font-family:'Cinzel',serif;font-size:40px;font-weight:600;color:var(--gold);line-height:1;flex-shrink:0;}
+  .detail-info h2{font-family:'Cinzel',serif;font-size:22px;font-weight:600;margin-bottom:4px;}
+  .detail-info p{font-size:13px;color:var(--text2);}
+  .detail-spotify-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+    background:var(--green);color:#fff;border:none;padding:8px 16px;border-radius:99px;
+    font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity .15s;}
+  .detail-spotify-link:hover{opacity:.85;}
 
-  .howto-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
-  .howto-box .card-title { margin-bottom: 0.75rem; }
-  .howto-step { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 0.75rem; }
-  .howto-step:last-child { margin-bottom: 0; }
+  .song-list{display:flex;flex-direction:column;gap:6px;}
+  .song-item{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--border);
+    border-radius:var(--radius-sm);padding:10px 12px;transition:border-color .15s;}
+  .song-item:hover{border-color:var(--border2);}
+  .song-num{font-size:12px;color:var(--text3);width:24px;text-align:right;flex-shrink:0;}
+  .song-cover{width:42px;height:42px;flex-shrink:0;border-radius:5px;background:var(--bg3);overflow:hidden;}
+  .song-cover img{width:100%;height:100%;object-fit:cover;}
+  .song-info{flex:1;min-width:0;}
+  .song-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .song-artist{font-size:12px;color:var(--text2);margin-top:1px;}
+  .song-reason{font-size:11px;color:var(--text3);margin-top:3px;font-style:italic;}
 
-  .copied-msg { display: none; color: var(--green); font-size: 13px; margin-left: 10px; }
+  .summary-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem;}
+  .stat-pill{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);
+    padding:10px 16px;font-size:13px;color:var(--text2);}
+  .stat-pill strong{color:var(--text);font-weight:700;}
 
-  .ico { width: 18px; height: 18px; display: inline-block; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .success-banner{background:rgba(29,185,84,0.1);border:1px solid rgba(29,185,84,0.3);color:#5de08a;
+    border-radius:var(--radius-sm);padding:14px 16px;font-size:14px;margin-bottom:1.5rem;line-height:1.6;}
+
+  .ico{width:18px;height:18px;display:inline-block;vertical-align:middle;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 </head>
 <body>
@@ -98,7 +137,7 @@
       <div class="hero-symbol">🎴</div>
       <h1>Arcani Maggiori × Spotify</h1>
       <div class="divider"></div>
-      <p>Recupera le tue 100 canzoni preferite da Spotify, poi incollale in Claude per ottenere le 22 playlist degli Arcani Maggiori.</p>
+      <p>Connetti il tuo Spotify: l'app analizza le tue 100 canzoni preferite con l'AI e crea automaticamente 22 playlist degli Arcani Maggiori nel tuo account.</p>
       <button class="btn-spotify" onclick="showStep('step-setup')">
         <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12.5c2.5-1 5.5-1 8 0M7 9c3-1.5 7-1.5 10 0M9 16c2-0.7 4-0.7 6 0"/></svg>
         Connetti con Spotify
@@ -109,15 +148,15 @@
   <!-- SETUP -->
   <div class="step" id="step-setup">
     <div class="card">
-      <div class="card-title">⚙ Configurazione</div>
+      <div class="card-title">⚙ Configurazione app Spotify</div>
       <div class="step-item">
         <span class="step-num">1</span>
-        <div>Vai su <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a> e crea una nuova app</div>
+        <div>Vai su <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a> e crea una nuova app (se non l'hai già)</div>
       </div>
       <div class="step-item">
         <span class="step-num">2</span>
         <div>
-          Nelle impostazioni → <strong>Redirect URIs</strong>, aggiungi esattamente:
+          Nelle impostazioni dell'app → <strong>Redirect URIs</strong>, assicurati che ci sia esattamente:
           <div class="redirect-box" id="redirect-display">caricamento…</div>
         </div>
       </div>
@@ -125,9 +164,9 @@
         <span class="step-num">3</span>
         <div>Copia il <strong>Client ID</strong> e incollalo qui:</div>
       </div>
-      <div style="margin-top:0.25rem">
+      <div style="margin-top:.25rem">
         <label for="client-id-input">Client ID</label>
-        <input type="text" id="client-id-input" placeholder="4b3a2c1d…" autocomplete="off" />
+        <input type="text" id="client-id-input" placeholder="4b3a2c1d…" autocomplete="off"/>
       </div>
     </div>
     <div id="setup-error" class="error-box"></div>
@@ -151,192 +190,334 @@
     <div class="loading-center">
       <div class="spinner"></div>
       <div class="loading-label" id="loading-msg">Recupero canzoni…</div>
+      <div class="prog-wrap"><div class="prog-fill" id="prog" style="width:3%"></div></div>
+      <div class="loading-detail" id="loading-detail"></div>
     </div>
   </div>
 
-  <!-- RISULTATO: copia e incolla -->
-  <div class="step" id="step-done">
-    <p class="result-intro">
-      ✅ <strong id="track-count-label">100 canzoni</strong> recuperate con successo da Spotify!<br>
-      Ora copia il testo qui sotto e incollalo in Claude (nella stessa chat dove hai questa app).
-    </p>
-
-    <textarea class="tracks-textarea" id="tracks-output" rows="14" readonly></textarea>
-
-    <div class="btn-row" style="margin-top:1rem">
-      <button class="btn-copy" onclick="copyTracks()">
-        <svg class="ico" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copia tutto
-      </button>
-      <span class="copied-msg" id="copied-msg">✓ Copiato!</span>
+  <!-- RESULTS -->
+  <div class="step" id="step-results">
+    <div id="grid-view">
+      <div class="results-header">
+        <h2>Le tue 22 Playlist degli Arcani</h2>
+        <p id="results-subtitle"></p>
+      </div>
+      <div id="success-banner" class="success-banner" style="display:none"></div>
+      <div class="summary-bar" id="summary-bar"></div>
+      <div class="arcana-grid" id="arcana-grid"></div>
+      <div style="display:flex;gap:10px;padding-top:1.5rem;border-top:1px solid var(--border);">
+        <button class="btn-ghost" onclick="resetApp()">
+          <svg class="ico" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+          Ricomincia
+        </button>
+      </div>
     </div>
-
-    <div class="howto-box">
-      <div class="card-title">📋 Passaggio successivo</div>
-      <div class="howto-step">
-        <span class="step-num">1</span>
-        <span>Clicca <strong>Copia tutto</strong> qui sopra</span>
+    <div id="detail-view" style="display:none">
+      <div class="detail-back">
+        <button class="btn-ghost" onclick="closeDetail()">← Tutte le playlist</button>
       </div>
-      <div class="howto-step">
-        <span class="step-num">2</span>
-        <span>Torna nella chat con Claude e incolla il testo (Ctrl+V / Cmd+V)</span>
-      </div>
-      <div class="howto-step">
-        <span class="step-num">3</span>
-        <span>Claude analizzerà le canzoni e creerà le 22 playlist degli Arcani Maggiori</span>
-      </div>
+      <div class="detail-header" id="detail-header"></div>
+      <div class="song-list" id="detail-songs"></div>
     </div>
   </div>
 
 </div>
 <script>
-function showStep(id) {
-  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+const ARCANA = [
+  {num:"0",   name:"Il Matto",              desc:"Libertà, spontaneità, viaggio",       keywords:"libertà inizio follia spontaneità viaggio avventura caos leggerezza",      color:"#9F77DD"},
+  {num:"I",   name:"Il Mago",               desc:"Potere, creatività, magia",            keywords:"potere volontà abilità creatività magia trasformazione forza",             color:"#5DCAA5"},
+  {num:"II",  name:"La Papessa",            desc:"Mistero, intuizione, silenzio",        keywords:"mistero intuizione segreto profondità silenzio interiorità",               color:"#534AB7"},
+  {num:"III", name:"L'Imperatrice",         desc:"Natura, abbondanza, sensualità",       keywords:"natura fertilità sensualità abbondanza bellezza femminile terra",          color:"#ED93B1"},
+  {num:"IV",  name:"L'Imperatore",          desc:"Autorità, struttura, forza",           keywords:"autorità struttura controllo forza potere dominanza",                      color:"#D85A30"},
+  {num:"V",   name:"Il Papa",               desc:"Tradizione, fede, guida spirituale",   keywords:"tradizione spiritualità guida fede saggezza religione sacro",              color:"#378ADD"},
+  {num:"VI",  name:"Gli Amanti",            desc:"Amore, scelta, unione",                keywords:"amore scelta relazione desiderio unione passione romanticismo",            color:"#D4537E"},
+  {num:"VII", name:"Il Carro",              desc:"Vittoria, movimento, conquista",       keywords:"vittoria determinazione movimento conquista velocità trionfo",             color:"#BA7517"},
+  {num:"VIII",name:"La Forza",              desc:"Coraggio, resilienza, pazienza",       keywords:"coraggio pazienza disciplina resilienza dominio perseveranza",             color:"#639922"},
+  {num:"IX",  name:"L'Eremita",             desc:"Solitudine, saggezza, ricerca",        keywords:"solitudine ricerca saggezza ritiro meditazione riflessione interiorità",   color:"#888780"},
+  {num:"X",   name:"La Ruota della Fortuna",desc:"Destino, ciclo, cambiamento",         keywords:"destino ciclo cambiamento fortuna caso karma svolta",                      color:"#EF9F27"},
+  {num:"XI",  name:"La Giustizia",          desc:"Equilibrio, verità, karma",            keywords:"equilibrio verità legge karma equità giustizia",                          color:"#185FA5"},
+  {num:"XII", name:"L'Appeso",              desc:"Sacrificio, pausa, sospensione",       keywords:"sacrificio pausa sospensione prospettiva attesa abbandono",               color:"#7F77DD"},
+  {num:"XIII",name:"La Morte",              desc:"Trasformazione, fine, rinascita",      keywords:"trasformazione fine rinascita cambiamento transizione addio",              color:"#555550"},
+  {num:"XIV", name:"La Temperanza",         desc:"Armonia, moderazione, fusione",        keywords:"armonia equilibrio moderazione fusione calma pazienza fluidità",          color:"#1D9E75"},
+  {num:"XV",  name:"Il Diavolo",            desc:"Tentazione, oscurità, eccesso",        keywords:"oscurità dipendenza tentazione ombre eccesso peccato vizio",              color:"#993C1D"},
+  {num:"XVI", name:"La Torre",              desc:"Crollo, caos, rivelazione",            keywords:"distruzione caos crollo rivelazione rottura esplosione impatto",          color:"#E24B4A"},
+  {num:"XVII",name:"La Stella",             desc:"Speranza, sogno, ispirazione",         keywords:"speranza guarigione sogno ispirazione luce futuro rinnovamento",          color:"#85B7EB"},
+  {num:"XVIII",name:"La Luna",              desc:"Illusione, inconscio, paura",          keywords:"illusione sogno paura inconscio notte mistero ombra",                     color:"#AFA9EC"},
+  {num:"XIX", name:"Il Sole",               desc:"Gioia, energia, vitalità",             keywords:"gioia energia vitalità successo chiarezza calore felicità",              color:"#FAC775"},
+  {num:"XX",  name:"Il Giudizio",           desc:"Risveglio, redenzione, chiamata",      keywords:"risveglio chiamata redenzione rinascita liberazione coscienza",           color:"#F0997B"},
+  {num:"XXI", name:"Il Mondo",              desc:"Completamento, totalità, trionfo",     keywords:"completamento integrazione totalità trionfo pienezza universale",         color:"#97C459"},
+];
+
+let allPlaylists = [];
+let spotifyToken = '';
+let spotifyUserId = '';
+
+function showStep(id){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
-function getRedirectUri() {
-  return window.location.href.split('?')[0].split('#')[0];
+function setProgress(pct,msg,detail){
+  document.getElementById('prog').style.width=pct+'%';
+  if(msg) document.getElementById('loading-msg').textContent=msg;
+  if(detail!==undefined) document.getElementById('loading-detail').textContent=detail;
+}
+function getRedirectUri(){return window.location.href.split('?')[0].split('#')[0];}
+function rnd(len){
+  const c='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const a=new Uint8Array(len);crypto.getRandomValues(a);
+  return Array.from(a).map(b=>c[b%c.length]).join('');
+}
+async function pkceChallenge(v){
+  const d=new TextEncoder().encode(v);
+  const h=await crypto.subtle.digest('SHA-256',d);
+  return btoa(String.fromCharCode(...new Uint8Array(h))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
 
-function generateRandomString(len) {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const arr = new Uint8Array(len);
-  crypto.getRandomValues(arr);
-  return Array.from(arr).map(b => chars[b % chars.length]).join('');
-}
-
-async function generateCodeChallenge(verifier) {
-  const data = new TextEncoder().encode(verifier);
-  const digest = await crypto.subtle.digest('SHA-256', data);
-  return btoa(String.fromCharCode(...new Uint8Array(digest)))
-    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
-}
-
-async function startOAuth() {
-  const clientId = document.getElementById('client-id-input').value.trim();
-  const errEl = document.getElementById('setup-error');
-  errEl.style.display = 'none';
-  if (!clientId) { errEl.textContent = 'Inserisci il Client ID.'; errEl.style.display = 'block'; return; }
-  const verifier = generateRandomString(64);
-  const challenge = await generateCodeChallenge(verifier);
-  const state = generateRandomString(16);
-  sessionStorage.setItem('pkce_verifier', verifier);
-  sessionStorage.setItem('pkce_state', state);
-  sessionStorage.setItem('spotify_client_id', clientId);
-  const params = new URLSearchParams({
-    client_id: clientId, response_type: 'code',
-    redirect_uri: getRedirectUri(), state,
-    scope: 'user-library-read',
-    code_challenge_method: 'S256', code_challenge: challenge,
+async function startOAuth(){
+  const clientId=document.getElementById('client-id-input').value.trim();
+  const e=document.getElementById('setup-error');e.style.display='none';
+  if(!clientId){e.textContent='Inserisci il Client ID.';e.style.display='block';return;}
+  const verifier=rnd(64),challenge=await pkceChallenge(verifier),state=rnd(16);
+  sessionStorage.setItem('pkce_verifier',verifier);
+  sessionStorage.setItem('pkce_state',state);
+  sessionStorage.setItem('spotify_client_id',clientId);
+  const p=new URLSearchParams({
+    client_id:clientId,response_type:'code',redirect_uri:getRedirectUri(),state,
+    scope:'user-library-read playlist-modify-public playlist-modify-private ugc-image-upload',
+    code_challenge_method:'S256',code_challenge:challenge,
   });
-  window.location.href = 'https://accounts.spotify.com/authorize?' + params.toString();
+  window.location.href='https://accounts.spotify.com/authorize?'+p.toString();
 }
 
-async function exchangeCode(code, clientId, verifier) {
-  const res = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      grant_type: 'authorization_code', code,
-      redirect_uri: getRedirectUri(), client_id: clientId, code_verifier: verifier,
-    }).toString(),
+async function exchangeCode(code,clientId,verifier){
+  const r=await fetch('https://accounts.spotify.com/api/token',{
+    method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams({grant_type:'authorization_code',code,redirect_uri:getRedirectUri(),client_id:clientId,code_verifier:verifier}).toString(),
   });
-  if (!res.ok) { const t = await res.text(); throw new Error(t); }
-  return res.json();
+  if(!r.ok)throw new Error(await r.text());
+  return r.json();
 }
 
-async function fetchLikedTracks(token) {
-  let tracks = [];
-  let url = 'https://api.spotify.com/v1/me/tracks?limit=50&offset=0';
-  while (tracks.length < 100 && url) {
-    const res = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token } });
-    if (!res.ok) throw new Error('Spotify API error ' + res.status);
-    const data = await res.json();
-    tracks = tracks.concat(data.items || []);
-    url = (data.next && tracks.length < 100) ? data.next : null;
+async function spotifyGet(url,token){
+  const r=await fetch(url,{headers:{'Authorization':'Bearer '+token}});
+  if(!r.ok)throw new Error('Spotify '+r.status+': '+await r.text());
+  return r.json();
+}
+async function spotifyPost(url,token,body){
+  const r=await fetch(url,{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok)throw new Error('Spotify POST '+r.status+': '+await r.text());
+  return r.json();
+}
+
+async function fetchLikedTracks(token){
+  let tracks=[],url='https://api.spotify.com/v1/me/tracks?limit=50&offset=0';
+  while(tracks.length<100&&url){
+    const d=await spotifyGet(url,token);
+    tracks=tracks.concat(d.items||[]);
+    url=(d.next&&tracks.length<100)?d.next:null;
   }
-  return tracks.slice(0, 100);
+  return tracks.slice(0,100);
 }
 
-function copyTracks() {
-  const ta = document.getElementById('tracks-output');
-  ta.select();
-  navigator.clipboard.writeText(ta.value).then(() => {
-    const msg = document.getElementById('copied-msg');
-    msg.style.display = 'inline';
-    setTimeout(() => msg.style.display = 'none', 2500);
-  }).catch(() => {
-    document.execCommand('copy');
-    const msg = document.getElementById('copied-msg');
-    msg.style.display = 'inline';
-    setTimeout(() => msg.style.display = 'none', 2500);
+async function callClaude(tracks){
+  const trackList=tracks.map((item,i)=>{
+    const t=item.track;
+    return `${i+1}. "${t.name}" - ${t.artists.map(a=>a.name).join(', ')} [${t.album.name}]`;
+  }).join('\n');
+  const arcanaList=ARCANA.map(a=>`${a.num} - ${a.name} (${a.keywords})`).join('\n');
+  const prompt=`Sei un esperto di musica e simbolismo dei Tarocchi. Assegna ogni canzone all'Arcano Maggiore più adatto.
+
+Arcani disponibili:
+${arcanaList}
+
+Canzoni:
+${trackList}
+
+Rispondi SOLO con JSON valido (no markdown):
+{"assignments":[{"index":0,"arcana_num":"0","reason":"motivazione max 8 parole"},...]}
+
+Regole:
+- Includi TUTTE le ${tracks.length} canzoni
+- arcana_num deve essere uno tra: 0,I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV,XVI,XVII,XVIII,XIX,XX,XXI
+- Distribuisci le canzoni in modo equilibrato tra gli arcani
+- Basa la scelta su: titolo, artista, mood, temi lirici, energia musicale`;
+
+  const r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,messages:[{role:'user',content:prompt}]})
+  });
+  if(!r.ok)throw new Error('Claude API '+r.status);
+  const d=await r.json();
+  const raw=d.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+  return JSON.parse(raw.replace(/```json|```/g,'').trim());
+}
+
+async function createSpotifyPlaylists(token,userId,playlists){
+  const created=[];
+  let i=0;
+  for(const pl of playlists){
+    if(pl.songs.length===0){created.push(null);i++;continue;}
+    setProgress(null,`Creazione playlist su Spotify…`,`"${pl.num} – ${pl.name}" (${i+1}/22)`);
+    try{
+      const newPl=await spotifyPost(
+        `https://api.spotify.com/v1/users/${userId}/playlists`,token,
+        {name:`Arcano ${pl.num} – ${pl.name}`,description:`${pl.desc} | Creata da Arcani Maggiori × Spotify`,public:false}
+      );
+      // aggiungi brani in chunk da 100
+      const uris=pl.songs.map(s=>s.uri).filter(Boolean);
+      for(let j=0;j<uris.length;j+=100){
+        await spotifyPost(`https://api.spotify.com/v1/playlists/${newPl.id}/tracks`,token,{uris:uris.slice(j,j+100)});
+      }
+      created.push(newPl);
+    }catch(e){
+      console.error('Errore creazione playlist',pl.name,e);
+      created.push(null);
+    }
+    i++;
+    await new Promise(res=>setTimeout(res,300)); // rate limit gentile
+  }
+  return created;
+}
+
+async function main(token){
+  spotifyToken=token;
+  showStep('step-loading');
+  setProgress(5,'Recupero profilo Spotify…','');
+
+  const me=await spotifyGet('https://api.spotify.com/v1/me',token);
+  spotifyUserId=me.id;
+
+  setProgress(12,'Recupero canzoni preferite…','');
+  const tracks=await fetchLikedTracks(token);
+  setProgress(25,`${tracks.length} canzoni trovate. Analisi AI…`,'Questo richiede circa 20 secondi…');
+
+  const aiResult=await callClaude(tracks);
+  setProgress(60,'Organizzazione playlist…','');
+
+  allPlaylists=ARCANA.map(a=>({...a,songs:[]}));
+  aiResult.assignments.forEach(asgn=>{
+    const item=tracks[asgn.index];if(!item)return;
+    const t=item.track;
+    const pl=allPlaylists.find(p=>p.num===asgn.arcana_num);
+    if(pl)pl.songs.push({
+      name:t.name,artist:t.artists.map(a=>a.name).join(', '),
+      cover:t.album.images?.[2]?.url||t.album.images?.[0]?.url||'',
+      uri:t.uri,reason:asgn.reason||''
+    });
+  });
+
+  setProgress(65,'Creazione playlist su Spotify…','Inizio creazione…');
+  const createdPls=await createSpotifyPlaylists(token,spotifyUserId,allPlaylists);
+
+  // salva link playlist
+  allPlaylists.forEach((pl,i)=>{if(createdPls[i])pl.spotifyUrl='https://open.spotify.com/playlist/'+createdPls[i].id;});
+
+  setProgress(100,'Completato!','');
+  setTimeout(renderResults,400);
+}
+
+function renderResults(){
+  const total=allPlaylists.reduce((s,p)=>s+p.songs.length,0);
+  const populated=allPlaylists.filter(p=>p.songs.length>0).length;
+
+  const banner=document.getElementById('success-banner');
+  banner.innerHTML=`✅ <strong>${populated} playlist</strong> create nel tuo account Spotify con <strong>${total} canzoni</strong>! Aprile direttamente dall'app Spotify.`;
+  banner.style.display='block';
+
+  document.getElementById('results-subtitle').textContent=`Clicca su un arcano per vedere le canzoni assegnate`;
+
+  document.getElementById('summary-bar').innerHTML=`
+    <div class="stat-pill"><strong>${total}</strong> canzoni distribuite</div>
+    <div class="stat-pill"><strong>${populated}</strong> / 22 playlist create</div>
+    <div class="stat-pill">max <strong>${allPlaylists.reduce((m,p)=>Math.max(m,p.songs.length),0)}</strong> canzoni per arcano</div>
+  `;
+
+  const grid=document.getElementById('arcana-grid');grid.innerHTML='';
+  allPlaylists.forEach((pl,idx)=>{
+    const card=document.createElement('div');
+    card.className='arcana-card'+(pl.songs.length===0?' empty':'');
+    card.innerHTML=`
+      <div class="ac-accent" style="background:${pl.color}"></div>
+      <div style="padding-left:8px">
+        <div class="ac-num">ARCANO ${pl.num}</div>
+        <div class="ac-name">${pl.name}</div>
+        <div class="ac-count">${pl.songs.length} canzon${pl.songs.length===1?'e':'i'}</div>
+        <div class="ac-open">${pl.songs.length>0?'Clicca per vedere →':''}</div>
+      </div>`;
+    if(pl.songs.length>0)card.onclick=()=>openDetail(idx);
+    grid.appendChild(card);
+  });
+  showStep('step-results');
+}
+
+function openDetail(idx){
+  const pl=allPlaylists[idx];
+  document.getElementById('grid-view').style.display='none';
+  document.getElementById('detail-view').style.display='block';
+  document.getElementById('detail-header').innerHTML=`
+    <div class="detail-roman">${pl.num}</div>
+    <div class="detail-info">
+      <h2>${pl.name}</h2>
+      <p>${pl.desc}</p>
+      ${pl.spotifyUrl?`<a class="detail-spotify-link" href="${pl.spotifyUrl}" target="_blank">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12.5c2.5-1 5.5-1 8 0M7 9c3-1.5 7-1.5 10 0M9 16c2-0.7 4-0.7 6 0"/></svg>
+        Apri su Spotify
+      </a>`:''}
+    </div>`;
+  const sl=document.getElementById('detail-songs');sl.innerHTML='';
+  pl.songs.forEach((s,i)=>{
+    const div=document.createElement('div');div.className='song-item';
+    div.innerHTML=`
+      <div class="song-num">${i+1}</div>
+      <div class="song-cover">${s.cover?`<img src="${s.cover}" alt="" loading="lazy">`:''}  </div>
+      <div class="song-info">
+        <div class="song-name">${s.name}</div>
+        <div class="song-artist">${s.artist}</div>
+        ${s.reason?`<div class="song-reason">${s.reason}</div>`:''}
+      </div>`;
+    sl.appendChild(div);
   });
 }
+function closeDetail(){
+  document.getElementById('grid-view').style.display='';
+  document.getElementById('detail-view').style.display='none';
+}
+function resetApp(){allPlaylists=[];spotifyToken='';spotifyUserId='';showStep('step-intro');}
 
-document.getElementById('redirect-display').textContent = getRedirectUri();
+document.getElementById('redirect-display').textContent=getRedirectUri();
 
-(async function() {
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-  const error = params.get('error');
-  if (!code && !error) return;
-
+// OAuth callback
+(async()=>{
+  const params=new URLSearchParams(window.location.search);
+  const code=params.get('code'),error=params.get('error');
+  if(!code&&!error)return;
   showStep('step-callback');
-  if (error) { document.getElementById('callback-label').textContent = 'Accesso negato: ' + error; return; }
-
-  const savedState = sessionStorage.getItem('pkce_state');
-  const verifier = sessionStorage.getItem('pkce_verifier');
-  const clientId = sessionStorage.getItem('spotify_client_id');
-  const state = params.get('state');
-
-  if (state !== savedState) { document.getElementById('callback-label').textContent = 'Errore di sicurezza: state non corrisponde.'; return; }
-  history.replaceState({}, '', window.location.pathname);
-
+  if(error){document.getElementById('callback-label').textContent='Accesso negato: '+error;return;}
+  const savedState=sessionStorage.getItem('pkce_state');
+  const verifier=sessionStorage.getItem('pkce_verifier');
+  const clientId=sessionStorage.getItem('spotify_client_id');
+  if(params.get('state')!==savedState){document.getElementById('callback-label').textContent='Errore sicurezza: state non corrisponde.';return;}
+  history.replaceState({},'',window.location.pathname);
   let tokenData;
-  try {
-    document.getElementById('callback-label').textContent = 'Scambio token…';
-    tokenData = await exchangeCode(code, clientId, verifier);
-  } catch(e) {
-    document.getElementById('callback-label').textContent = 'Errore token';
-    const el = document.getElementById('callback-error');
-    el.innerHTML = `${e.message}<br><br><small>Redirect URI nell'app Spotify deve essere esattamente: <code>${getRedirectUri()}</code></small>`;
-    el.style.display = 'block';
-    return;
+  try{
+    document.getElementById('callback-label').textContent='Scambio token…';
+    tokenData=await exchangeCode(code,clientId,verifier);
+  }catch(e){
+    document.getElementById('callback-label').textContent='Errore token';
+    const el=document.getElementById('callback-error');
+    el.innerHTML=`${e.message}<br><br><small>Redirect URI deve essere: <code>${getRedirectUri()}</code></small>`;
+    el.style.display='block';return;
   }
-
   sessionStorage.removeItem('pkce_verifier');
   sessionStorage.removeItem('pkce_state');
   sessionStorage.removeItem('spotify_client_id');
-
-  showStep('step-loading');
-  document.getElementById('loading-msg').textContent = 'Recupero canzoni preferite…';
-
-  let tracks;
-  try {
-    tracks = await fetchLikedTracks(tokenData.access_token);
-  } catch(e) {
+  try{await main(tokenData.access_token);}
+  catch(e){
     showStep('step-callback');
-    document.getElementById('callback-label').textContent = 'Errore Spotify';
-    const el = document.getElementById('callback-error');
-    el.textContent = e.message; el.style.display = 'block';
-    return;
+    document.getElementById('callback-label').textContent='Errore durante l\'elaborazione';
+    const el=document.getElementById('callback-error');
+    el.textContent=e.message;el.style.display='block';
   }
-
-  // Costruisci testo da incollare in Claude
-  const lines = tracks.map((item, i) => {
-    const t = item.track;
-    return `${i+1}. "${t.name}" - ${t.artists.map(a=>a.name).join(', ')} [${t.album.name}]`;
-  });
-
-  const output = `ARCANI SPOTIFY - LE MIE ${tracks.length} CANZONI PREFERITE\n` +
-    `=`.repeat(50) + `\n\n` +
-    lines.join('\n') +
-    `\n\n---\nInserisci queste ${tracks.length} canzoni nelle 22 playlist degli Arcani Maggiori (dal Matto 0 al Mondo XXI), assegnando ogni canzone all'arcano più adatto in base a mood, titolo, artista e temi. Per ogni canzone indica: numero, arcano assegnato e una breve motivazione (max 8 parole). Poi mostra le playlist raggruppate per arcano.`;
-
-  document.getElementById('track-count-label').textContent = tracks.length + ' canzoni';
-  document.getElementById('tracks-output').value = output;
-  showStep('step-done');
 })();
 </script>
 </body>
